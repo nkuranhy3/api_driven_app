@@ -1,28 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Api web App</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-</head>
-<style>
-body {background-color: powderblue;}
-h1   {color: blue;
-    font-size: 3em;
-}
-p    {color: red;}
-</style>
-<body>
-    
-    <h1>api driven app</h1>
 
-<p>ttttttttttttttttttttttttttttttttttttttt</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Api web App</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    </head>
+    <!--
+    inline styling
 
-    <script>
-        alert("waaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        
-    </script>
-</body>
+    -->
+    <style>
+        div {
+            position: relative;
+            margin: 0 auto;
+            width: 50%;
+
+        }
+
+        h1 {
+            color: blue;
+            font-size: 3em;
+        }
+
+        p {
+            color: red;
+            font-size: 2em;
+        }
+    </style>
+
+    <body>
+        <div>
+            <h1>Zen code of the moment</h1>
+
+            <button id="btn1">Get Cote from zen</button>
+
+            <p id="zen">New zen cote</p>
+
+        </div>
+        <script>
+            /* global $*/
+            $("#btn1").on("click", function() {
+                $.ajax({
+                        method: "GET",
+                        url: "https://api.github.com/zen"
+                    })
+                    .done(function(data) {
+                        $("#zen").text(data);
+                    })
+                    .fail(function(err) {
+                            console.log("oops there was an error");
+                            console.log(err);
+                        }
+
+                    )
+            });
+        </script>
+    </body>
+
 </html>

@@ -13,5 +13,5 @@ app.get("/", function(req, res){
 
 
 app.listen(port, process.env.IP, function(){
-    console.log("Movie App has started on port " + port);
+    console.log("App has started on port " + port);
 });
